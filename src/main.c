@@ -10,8 +10,8 @@
 
 int main(int ac, char **av)
 {
-        arguments args = parsing(ac, av);
+    arguments args = parsing(ac, av);
 
-        printf("args.password = %s\n", args.password);
-        return (0);
+    printf("args.port = %d\n", args.port);
+    return (0);
 }

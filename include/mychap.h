@@ -11,7 +11,7 @@
 typedef struct arguments_s
 {
         char *target;
-        char *port;
+        int port;
         char *password;
 } arguments;
 

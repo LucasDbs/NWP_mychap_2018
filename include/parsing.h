@@ -11,18 +11,13 @@
 #include <argp.h>
 #include "mychap.h"
 
-// typedef struct arguments_s
-// {
-//         char *target;
-//         char *port;
-//         char *password;
-// } arguments;
+int argp_err_exit_status = 84;
 
 static struct argp_option options[] = {
-        {"target", 't', "TARGET", 0, "Target", 0 },
-        {"port", 'p', "PORT", 0, "Port", 0 },
-        {"password", 'P', "PASSW", 0, "Password", 0 },
-        { 0 }
+    {"target", 't', "TARGET", 0, "Target", 0 },
+    {"port", 'p', "PORT", 0, "Port", 0 },
+    {"password", 'P', "PASSW", 0, "Password", 0 },
+    { 0 }
 };
 
 #endif // PARSING_H_
