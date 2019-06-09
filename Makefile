@@ -8,7 +8,9 @@
 NAME	=	mychap
 
 SRC	=	src/main.c		\
-		src/parsing.c
+		src/parsing.c		\
+		src/msg_gestion.c	\
+		src/headers.c
 
 OBJ	=	$(SRC:.c=.o)
 
