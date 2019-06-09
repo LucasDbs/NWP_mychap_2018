@@ -5,9 +5,9 @@
 ** main.c
 */
 
+#include <stdlib.h>
 #include <netdb.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "mychap.h"
 
 int create_socket(char *target)
@@ -30,47 +30,27 @@ int create_socket(char *target)
     return (sock);
 }
 
-char *sha256(char *str)
+int print_res(char *msg)
 {
-    unsigned char hash[SHA256_DIGEST_LENGTH] = { 0 };
-    struct SHA256state_st sha256;
-    char *buff = calloc(((SHA256_DIGEST_LENGTH * 2) + 1), sizeof(char));
-
-    if (!buff)
-        return (NULL);
-    SHA256_Init(&sha256);
-    SHA256_Update(&sha256, str, strlen(str));
-    SHA256_Final(hash, &sha256);
-    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-        sprintf(buff + (i * 2), "%02x", hash[i]);
-    buff[64] = 0;
-    return (buff);
-}
-
-char *to_sha(char *msg, char *password)
-{
-    char *sha = malloc(sizeof(char) * (strlen(msg) + strlen(password) + 1));
-
-    if (!sha)
-        return (NULL);
-    strcpy(sha, msg);
-    strcat(sha, password);
-    sha = sha256(sha);
-    return (sha);
+    if (strcmp(msg, "KO") == 0)
+        printf("%s\n", msg);
+    else
+        printf("Secret: '%s'\n", msg);
+    return (0);
 }
 
 int main(int ac, char **av)
 {
     arguments args = parsing(ac, av);
-    int sock = 0;
+    int sock = create_socket(args.target);
     char *msg = NULL;
 
-    if ((sock = create_socket(args.target)) == -1)
+    if (sock == -1)
         return (84);
-    msg = write_server(sock, &args, "client hello");
-    printf("msg av sha = %s\n", msg);
+    msg = send_to_serv(sock, &args, "client hello");
     msg = to_sha(msg, args.password);
-    msg = write_server(sock, &args, msg);
-    printf("msg ap sha = %s\n", msg);
+    msg = send_to_serv(sock, &args, msg);
+    print_res(msg);
+    free(msg);
     return (0);
 }

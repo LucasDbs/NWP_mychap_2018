@@ -20,4 +20,4 @@ static struct argp_option options[] = {
     { 0 }
 };
 
-#endif // PARSING_H_
+#endif

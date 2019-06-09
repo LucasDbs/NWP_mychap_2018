@@ -19,7 +19,7 @@ unsigned short csum(unsigned short *buf, int nwords)
     return (unsigned short)(~sum);
 }
 
-void ip_header(char *server, char *msg, struct iphdr *ip_hdr)
+void ip_header(struct iphdr *ip_hdr, char *msg, char *server)
 {
     ip_hdr->ihl = 5;
     ip_hdr->version = 4;
@@ -35,7 +35,7 @@ void ip_header(char *server, char *msg, struct iphdr *ip_hdr)
     ip_hdr->daddr = inet_addr(server);
 }
 
-void udp_header(int port, struct udphdr *udp_hdr, int size)
+void udp_header(struct udphdr *udp_hdr, int port, int size)
 {
     udp_hdr->check = 0;
     udp_hdr->source = htons(6554);
