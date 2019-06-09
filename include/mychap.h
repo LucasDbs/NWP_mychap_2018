@@ -8,22 +8,10 @@
 #if !defined(MYCHAP_H_)
 #define MYCHAP_H_
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <ctype.h>
 #include <string.h>
-#include <errno.h>
-#include <stdio.h>
 #include <netinet/ip.h>
 #include <netinet/udp.h>
-#include <arpa/inet.h>
-#include <stdlib.h>
-#include <netdb.h>
-#include <openssl/crypto.h>
 #include <openssl/sha.h>
-#include <openssl/opensslv.h>
-#include <openssl/opensslconf.h>
 
 typedef struct arguments_s
 {

@@ -5,6 +5,7 @@
 ** headers.c
 */
 
+#include <arpa/inet.h>
 #include "mychap.h"
 
 unsigned short csum(unsigned short *buf, int nwords)

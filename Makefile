@@ -14,7 +14,7 @@ SRC	=	src/main.c		\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	=	-g -W -Wall -Wextra -Iinclude/
+CFLAGS	=	-g -W -Wall -Wextra -Iinclude/ -lcrypto
 
 all:		$(NAME)
 

@@ -5,6 +5,8 @@
 ** msg_gestion.c
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "mychap.h"
 
 int send_msg(int sock, char *headers, uint16_t len,
