@@ -24,7 +24,7 @@ int create_socket(char *);
 char *send_to_serv(int, arguments *, char *);
 struct sockaddr_in init_server_add(int);
 void udp_header(struct udphdr *, int, int);
-void ip_header(struct iphdr *, char *, char *);
+void ip_header(struct iphdr *, size_t, char *);
 unsigned short csum(unsigned short *, int);
 char *to_sha(char *, char *);
 int sha256(char *, char *);
